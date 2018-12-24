@@ -3,8 +3,10 @@
     <p>{{ positiveCount }}</p>
     <p>{{ count }}</p>
     <p>
-      <button @click="increment">+</button>
-      <button @click="decrement">-</button>
+      <button @click="increment(10)">+10</button>
+      <button @click="increment(1)">+</button>
+      <button @click="decrement(1)">-</button>
+      <button @click="decrement(10)">-10</button>
     </p>
   </div>
 </template>
@@ -20,11 +22,11 @@ import { mapState, mapGetters } from 'vuex';
   },
 })
 export default class Counter extends Vue {
-  private increment() {
-    this.$store.commit('increment');
+  private increment(n: number): void {
+    this.$store.commit('increment', { amount: n });
   }
-  private decrement() {
-    this.$store.commit('decrement');
+  private decrement(n: number): void {
+    this.$store.commit('decrement', { amount: n });
   }
 }
 </script>
