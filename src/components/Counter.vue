@@ -10,12 +10,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { mapState } from 'vuex';
 
-@Component({})
+@Component({
+  computed: mapState(['count']),
+})
 export default class Counter extends Vue {
-  get count() {
-    return this.$store.state.count;
-  }
   private increment() {
     this.$store.commit('increment');
   }
