@@ -1,5 +1,6 @@
 <template>
   <div class="counter">
+    <p>{{ positiveCount }}</p>
     <p>{{ count }}</p>
     <p>
       <button @click="increment">+</button>
@@ -10,10 +11,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 @Component({
-  computed: mapState(['count']),
+  computed: {
+    ...mapState(['count']),
+    ...mapGetters(['positiveCount']),
+  },
 })
 export default class Counter extends Vue {
   private increment() {

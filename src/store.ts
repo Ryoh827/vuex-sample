@@ -15,4 +15,9 @@ export default new Vuex.Store({
     increment: (state) => state.count++,
     decrement: (state) => state.count--,
   },
+  getters: {
+    positiveCount: (state) => {
+      return state.count > 0 ? state.count : 0;
+    },
+  },
 });
